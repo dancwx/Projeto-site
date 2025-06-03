@@ -143,6 +143,7 @@ ul{
   background-color: #beff1b; /* cor normal */
   border-radius: 5px;
   transition: background-color 0.3s ease;
+ 
 }
 
 .dot.active {
@@ -165,10 +166,12 @@ justify-content: center;
 display: flex;
 align-items: end;
 gap: 10px;
+margin-top: 25px;
 }
 .p1{
     font-weight: bold;
     font-family: hak;
+    
 }
 h2{
     font-size: 60px;
@@ -181,6 +184,7 @@ h2{
  text-align: right;
  max-width: 400px;
  font-family: hak;
+margin-top: 30px;
 }
 .sib{
     border-radius: 30px;
