@@ -1,0 +1,261 @@
+@charset "UTF-8";
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    list-style: none;
+ font-family: hak;
+}
+@font-face {
+    font-family: hak;
+    
+}
+body{
+    background-color: black;
+    color: white;
+    font-size: 16px;
+
+ 
+}
+header {
+    z-index: 2;
+    width: 80vh;
+    position: fixed;
+    left: 50%;
+   transform: translateX(-50%);
+   display: grid;
+   grid-template-columns: 1fr 600px;
+   gap: 100px;
+   align-items: center;
+   font-family: hak;
+& img{
+    width: 250px;
+}
+& nav{
+    & ul{
+        display: grid;
+        grid-template-columns: repeat(3, 200px);
+        font-family: hak;
+    }
+}
+}
+section{
+      background: radial-gradient(#7f3d9e, #44004e);
+    height: 100vh;
+    position: relative;
+}
+    .list{
+        width: 70vw;
+        margin: auto;
+        height: 100%;
+        position: relative;
+        & .item{
+            position: absolute;
+            inset: 0;
+            & .carr-img{
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 70%;
+                & img{
+                    padding-top: 100px;
+                    width: 100vh;
+                    transform: rotate(-30deg);
+                      margin-top: 30px;
+                }
+            }
+     }
+
+    }
+
+    .list::before {
+    content: '';
+    position: absolute;
+    top: 450px; /* mesma altura das setas */
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1px;
+    width: 120vh; /* igual à largura do container de setas */
+    background-color: white; /* para funcionar como linha */
+    z-index: 1;
+     background: linear-gradient(to right, white 20%, transparent 15%, transparent 59%, white 60%);
+}
+.arrows {
+  position: absolute;
+  top : 450px; /* coloca lá embaixo */
+  left: 50%;
+transform: translate(-50%, -50%); /* centraliza baseado no carro */
+ justify-content: space-between;
+ display: flex;
+ width: 125vh;
+ 
+
+}
+.arrows button {
+  border: none;
+  background-color: white; /* ou a cor que quiser */
+  color: rgb(214, 214, 214);
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrows button:hover {
+  background-color: #beff1b;
+}
+
+.arrows img {
+  width: 15px;
+  height: auto;
+  
+
+}
+
+.arrow-left {
+  transform: rotate(180deg); /* vira a seta pra esquerda */
+}
+.indicadores{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 200px;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 15px;
+}
+.number{
+    font-size: 5em;
+}
+ul{
+    display: flex;
+    gap: 10px;
+}
+.dot {
+  width: 50px;
+  height: 5px;
+  background-color: #beff1b; /* cor normal */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: white; /* cor do ativo */
+}
+
+.active{
+background-color: white;
+}
+
+ .content {
+position: absolute;
+top: 100px;
+left: 360px;
+right: 100px;
+width: 60%;
+height: 70%;
+flex-direction: column;
+justify-content: center;
+display: flex;
+align-items: end;
+gap: 10px;
+}
+.p1{
+    font-weight: bold;
+    font-family: hak;
+}
+h2{
+    font-size: 60px;
+    line-height: 1em;
+
+}
+.des{
+ color: #d9d9d9;
+ font-size: 12px;
+ text-align: right;
+ max-width: 400px;
+ font-family: hak;
+}
+.sib{
+    border-radius: 30px;
+    height: 35px;
+    width: 120px;
+    text-transform:uppercase;
+    border: 2px solid #791fd3;
+    background-color: #beff1b;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+}
+section .item {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  background: transparent; /* garante fundo transparente */
+  pointer-events: none; /* evita interação nos itens invisíveis */
+}
+
+/* Item ativo visível e na posição central */
+section .item.active {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2; /* fica acima dos outros */
+}
+
+/* Para efeito de transição, podemos criar classes para o item sair pela esquerda ou direita */
+
+/* Item entrando da direita */
+section .item.enter-right {
+  transform: translateX(100vw);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Item saindo para a esquerda */
+section .item.exit-left {
+  transform: translateX(-100vw);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Ajusta a imagem do carro */
+section .item .carr-img img {
+  width: 100%;
+  max-width: 100vh;
+  transform: rotate(-30deg); /* mantém o estilo original */
+  transition: transform 0.5s ease 0.3s;
+  background: transparent; /* remove fundo branco */
+  display: block;
+  margin: 30px auto 0 auto;
+}
+
+/* Conteúdo do item com transições */
+section .item .content .carr-img,
+section .item .content .p1,
+section .item .content h2,
+section .item .content .des,
+section .item .content .sib {
+  transition: opacity 0.7s ease 0.3s;
+  opacity: 1;
+}
+
+/* Ajustes específicos de delay */
+section .item .content h2 {
+  transition-delay: 0.5s;
+}
+
+section .item .content .des {
+  transition-delay: 0.7s;
+}
+
+section .item .content .sib {
+  transition-delay: 0.9s;
+}
